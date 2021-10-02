@@ -57,7 +57,6 @@ const StyledLink = styled(Link)`
     }
 `;
 
-
 const Navigation = () => {
     return (
         <HeaderContainer>
