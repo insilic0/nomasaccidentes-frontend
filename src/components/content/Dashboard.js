@@ -18,7 +18,7 @@ const Dashboard = () => {
 
     const authContext = useContext(AuthConext);
     const {usuario} = authContext;
-    // Extraer la información de autenticación
+    // Extraer la información de autenticaci
 
     const [stateComunas, setComunas] = useState({});
 
