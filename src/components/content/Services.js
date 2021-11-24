@@ -26,10 +26,21 @@ const ListItem = styled.div`
     margin-bottom: 30px;
     width: 700px;
     transition: 1s ease;
-    &:hover{
-       background-color: black;
-    }
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     
+    @media(min-width:1500px){
+        &:hover{
+        background-color: black;
+        width : 725px;
+        height: 475px;
+        box-shadow: 5px 5px gray;
+        }
+    }
+
     @media(max-width:1500px){
         width: 400px;
     }
@@ -39,20 +50,20 @@ const ItemImg = styled.img`
     width: 300px;
     height: 200px;
 `;
-const Services = () => {
+const Services = ({servicesRef}) => {
     return (
-        <ServicesContainer>
+        <ServicesContainer ref ={servicesRef}>
             <ServicesDesc>Nuestros Servicios</ServicesDesc>
             <ListContainer>
                 <ListItem>
-                    <h2>Asesorias</h2>
-                    <p>Contamos con 10 Asesorias al momento de contratar nuestros servicios</p>
+                    <h2>Asesorías</h2>
+                    <p>Contamos con 10 Asesorías al momento de contratar nuestros servicios</p>
                     <ItemImg src="./assets/services/services-1.jpg"></ItemImg>
                 </ListItem>
                 
                 <ListItem>
                     <h2>Visitas</h2>
-                    <p>Contamos con 10 Asesorias al momento de contratar nuestros servicios</p>
+                    <p>Nuestros servicios incluyen 2 visitas mensuales para verificar tu checklist personalizado</p>
                     <ItemImg src="./assets/services/visita.png"></ItemImg>
                 </ListItem>
                 <ListItem>

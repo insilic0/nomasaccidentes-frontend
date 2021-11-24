@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
+import AuthContext from '../../context/autenticacion/authContext';
 
 const TopBarContainer = styled.div`
     display: flex;
@@ -7,11 +8,16 @@ const TopBarContainer = styled.div`
     padding: 10px 30px;
     align-items: center;
     height: 100px;
-    background-color: #004040;
+    background-color: #1F4172;
     color: white;
 
     h1{
         padding: 0;
+    }
+    @media(max-width:768px){
+        h1{
+            font-size: 20px;
+        }
     }
 `;
 
@@ -30,10 +36,14 @@ const Button = styled.button`
 `;
 
 const TopBar = () => {
+
+    const authContext = useContext(AuthContext);
+    const {usuario, cerrarSesion} = authContext;
+
     return (
         <TopBarContainer>
-            <h1>Bienvenido: <span>Ignacio</span></h1>
-            <Button>Cerrar Sesión</Button>
+            <h1>Bienvenido: <span>{usuario ? (`${usuario.nombre_out} ${usuario.apellido_out}`) : null}</span></h1>
+            <Button onClick={()=> cerrarSesion()}>Cerrar Sesión</Button>
         </TopBarContainer>
     )
 }

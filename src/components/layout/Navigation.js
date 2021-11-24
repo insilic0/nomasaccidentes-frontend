@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+import AuthState from '../../context/autenticacion/authState';
 
 const HeaderContainer = styled.header`
     display: flex;
@@ -29,7 +31,7 @@ const StyledImg = styled.img`
     height: 40px;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
     text-decoration: none;
     color: #FFFFFF;
     padding: 1rem;
@@ -57,20 +59,49 @@ const StyledLink = styled(Link)`
     }
 `;
 
-const Navigation = () => {
+const StyledLink2 = styled(Link)`
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 1rem;
+    position: relative;
+
+    &:hover{
+        cursor: pointer;
+    }
+    
+
+    ::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #FFFFFF;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 250ms ease-in;
+    }
+    &:hover::after{
+        transform: scaleX(1);
+    }
+`;
+
+const Navigation = forwardRef(({onFormClick, onAboutClick, onServicesClick, onHomeClick}, ref) => {
     return (
         <HeaderContainer>
-            <StyledImg src='../../assets/logo.png' alt="logo"></StyledImg>
+            <StyledImg src='/logo.png' alt="logo"></StyledImg>
             <p>No +<span>Accidentes</span></p>
             <NavNavigation>
-                <StyledLink>Inicio</StyledLink>
-                <StyledLink>Sobre Nosotros</StyledLink> 
-                <StyledLink>Servicios</StyledLink>
-                <StyledLink>Contacto</StyledLink>
-                <StyledLink to={'/login'}>Iniciar Sesion</StyledLink>   
+                <StyledLink onClick={onHomeClick}>Inicio</StyledLink>
+                <StyledLink onClick={onAboutClick}>Sobre Nosotros</StyledLink> 
+                <StyledLink onClick={onServicesClick}>Servicios</StyledLink>
+                <StyledLink onClick={onFormClick}>Contacto</StyledLink>
+                <StyledLink2 to={'/login'}>Iniciar Sesion</StyledLink2>   
             </NavNavigation>
       </HeaderContainer>
     )
-}
+
+})
 
 export default Navigation;

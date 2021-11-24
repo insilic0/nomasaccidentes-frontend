@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
+import Swal from 'sweetalert2';
 
 const FormContainer = styled.div`
     text-align: center;
@@ -46,17 +47,62 @@ const InputField = styled.div`
         }
     }
 `;
-const Contact = () => {
+const Contact = ({formRef}) => {
+
+    const [contact, setContact] = useState({
+        email:'',
+        nombre:'',
+        mensaje:''
+    });
+
+    const {email, nombre, mensaje} = contact;
+
+
+    const handleChange = e =>{
+        setContact({
+            ...contact,
+            [e.target.name] : e.target.value
+        });
+    }
+
+    const handleSubmit = e =>{
+        e.preventDefault();
+
+        if(email===''||nombre===''||mensaje===''){
+            Swal.fire(
+                'Ups!',
+                'Debes completar todos los campos',
+                'error'
+            );
+            return;
+        }
+
+        Swal.fire(
+            'Enhorabuena!, Contacto enviado correctamente',
+            'Recibirás una respuesta a la brevedad',
+            'success'
+        );
+        setContact({
+            email:'',
+            nombre:'',
+            mensaje:''
+        })
+    }
+
     return (
-        <FormContainer>
-            <h1>Formulario de Contacto</h1>
-            <form>
+        <FormContainer >
+            <h1 ref={formRef}>Formulario de Contacto</h1>
+            <form
+                onSubmit={handleSubmit}
+            >
                 <InputField>
-                    <label htmlFor="email">Correo electronico</label>
+                    <label htmlFor="email">Correo electrónico</label>
                     <input
                         type="email"
                         name="email"
                         id="email"
+                        value={email}
+                        onChange={handleChange}
                     />
                 </InputField>
 
@@ -66,6 +112,8 @@ const Contact = () => {
                         type="text"
                         name="nombre"
                         id="nombre"
+                        onChange={handleChange}
+                        value={nombre}
                     />
                 </InputField>
 
@@ -74,6 +122,8 @@ const Contact = () => {
                     <textarea
                         name="mensaje"
                         id="nombre"
+                        value={mensaje}
+                        onChange={handleChange}
                     >
                     </textarea>
                 </InputField>
