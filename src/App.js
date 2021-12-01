@@ -9,6 +9,7 @@ import RutaPrivada from './components/routes/RutaPrivada';
 import AlertaState from './context/validacion/alertaState';
 import AuthState from './context/autenticacion/authState';
 import ClienteState from './context/cliente/clienteState';
+import FuncionarioState from './context/funcionario/FuncionarioState';
 
 import tokenAuth from './config/tokenAuth';
 
@@ -23,22 +24,22 @@ function App() {
   //Revisar token
 
   return (
-    <ClienteState>
-      <AuthState>
-        <AlertaState>
-        
-            <Router>
-              <Switch>
-                <Route exact path ='/' component={Landing}></Route>
-                <Route exact path='/login' component={Login}></Route>
-                <RutaPrivada exact path='/dashboard' component={Dashboard}></RutaPrivada>
-              </Switch>
-            </Router>
-           
-        </AlertaState>
-        </AuthState>
+
+    <FuncionarioState>
+      <ClienteState>
+        <AuthState>
+          <AlertaState>
+              <Router>
+                <Switch>
+                  <Route exact path ='/' component={Landing}></Route>
+                  <Route exact path='/login' component={Login}></Route>
+                  <RutaPrivada exact path='/dashboard' component={Dashboard}></RutaPrivada>
+                </Switch>
+              </Router>
+          </AlertaState>
+          </AuthState>
     </ClienteState>
-   
+    </FuncionarioState>
   );
 }
 
