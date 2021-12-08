@@ -1,5 +1,6 @@
 import {   
-    AGREGAR_CLIENTE
+    AGREGAR_CLIENTE,
+    OBTENER_CLIENTE
 } from '../../types';
 
 export default(state, action) => {
@@ -9,5 +10,12 @@ export default(state, action) => {
                 ...state,
                 mensaje : action.payload
             }
+        case OBTENER_CLIENTE:
+            return{
+                ...state,
+                cliente: action.payload
+                
+            }
+        
     }
 }

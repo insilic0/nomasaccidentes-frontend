@@ -230,6 +230,11 @@ footer{
   background-color: #1F4172;
   
 }
+@media(max-width:768px){
+  .sidebar-container{
+    height: 100vh;
+}
+}
 
 .sidebar-item a{
   text-decoration: none;
@@ -627,7 +632,7 @@ footer{
 
 /* Gestión Contrato */
 .contenedor-contrato{
-  width: 100%;
+  width: 80%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -640,3 +645,58 @@ footer{
   justify-content: space-evenly;
 }
 
+@media(max-width:768px){
+
+.contenido-contrato{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contrato-resumen{
+  display: flex;
+  flex-direction: column;
+}
+
+.info-cliente, .info-empresa{
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+.campo-contrato{
+  width: 200px;
+  margin: 0 auto;
+  margin-top: 5px;
+}
+
+}
+
+.datos-contrato{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+}
+
+.datos-contrato h1{
+  margin-bottom: 20px;
+}
+
+.info-cliente,.info-empresa{
+  display: flex;
+  margin: 0 auto;
+  width: 500px;
+}
+
+.campo-contrato{
+  margin-top: 10px;
+}
+
+.submit-contrato{
+  margin-top: 20px;
+}
+
+.campo-contrato input[type="date"]{
+  width: 222px;
+}

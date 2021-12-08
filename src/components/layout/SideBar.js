@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useRouteMatch} from 'react-router-dom';
 import styled from 'styled-components';
 
 import AuthContext from '../../context/autenticacion/authContext';
@@ -11,6 +11,8 @@ const StyledLink = styled(Link)`
 
 
 const SideBar = () => {
+
+    let {path, url} = useRouteMatch();
 
     const authContext = useContext(AuthContext);
     const {usuarioAutenticado, usuario } = authContext;
@@ -27,14 +29,14 @@ const SideBar = () => {
                 <>
 
                 <div className="sidebar-item">
-                   <StyledLink to={`/dashboard/home`}>
+                   <StyledLink to={`/home`}>
                        <i className="fas fa-home"></i>
                        <p>Inicio</p>
                    </StyledLink> 
                </div>
                
                <div className="sidebar-item">
-                    <StyledLink to={`/dashboard/add-user`}>
+                    <StyledLink to={`/add-user`}>
                         <i className="fas fa-user-plus"></i>
                         <p>Agregar Cliente</p>
                     </StyledLink> 
@@ -42,21 +44,21 @@ const SideBar = () => {
 
                 <div className="sidebar-item">
                 
-                    <StyledLink to={`/dashboard/gestion-asesoria`}>
+                    <StyledLink to={`/gestion-asesoria`}>
                         <i className="fas fa-briefcase"></i>
                         <p>Gestión Asesorías</p>
                     </StyledLink>   
                 </div>
 
                 <div className="sidebar-item">
-                    <StyledLink to={`/dashboard/gestion-capacitaciones`}>
+                    <StyledLink to={`/gestion-capacitaciones`}>
                         <i className="fas fa-bullhorn"></i>
                         <p>Gestión Capacitaciones</p>
                     </StyledLink>   
                 </div>
 
                 <div className="sidebar-item">
-                    <StyledLink to={`/dashboard/add-contract`}>
+                    <StyledLink to={`/add-contract`}>
                         <i className="fas fa-map-marker-alt"></i>
                         <p>Gestión Visitas</p>
                     </StyledLink>   
@@ -69,28 +71,28 @@ const SideBar = () => {
                 <>
                     <div className="sidebar-item">
                 
-                    <StyledLink to={`/dashboard/add-contract`}>
+                    <StyledLink to={`/add-contract`}>
                         <i className="fas fa-file-signature"></i>
                         <p>Gestion Contrato</p>
                     </StyledLink>   
                     </div>
 
                     <div className="sidebar-item">
-                        <StyledLink to={`/dashboard/add-funcionario`}>
+                        <StyledLink to={`/add-funcionario`}>
                             <i className="fas fa-user-tie"></i>
                             <p>Agregar Funcionario</p>
                         </StyledLink> 
                     </div>
 
                     <div className="sidebar-item">
-                        <StyledLink to={`/dashboard/add-contract`}>
+                        <StyledLink to={`/add-contract`}>
                             <i className="fas fa-search"></i>
                             <p>Búsqueda Empresa</p>
                         </StyledLink>   
                     </div>
 
                     <div className="sidebar-item">
-                        <StyledLink to={`/dashboard/add-contract`}>
+                        <StyledLink to={`/add-contract`}>
                             <i className="fas fa-chart-line"></i>
                             <p>Gestión Reportes</p>
                         </StyledLink>   

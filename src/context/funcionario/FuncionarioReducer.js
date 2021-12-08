@@ -1,5 +1,6 @@
 import {   
-    AGREGAR_FUNCIONARIO
+    AGREGAR_FUNCIONARIO,
+    OBTENER_FUNCIONARIO
 } from '../../types';
 
 export default(state, action) => {
@@ -9,5 +10,11 @@ export default(state, action) => {
                 ...state,
                 mensaje : action.payload
             }
+            case OBTENER_FUNCIONARIO:
+                return{
+                    ...state,
+                    funcionario: action.payload
+                    
+                }
     }
 }

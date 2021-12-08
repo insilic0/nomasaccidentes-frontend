@@ -289,6 +289,7 @@ const AgregarUsuario = ({stateComunas}) => {
                                 ))}
                             </select>
                             </div>
+
                             
                             <div className="contenedor-inputs">
                                 <label>Teléfono Fijo</label>

@@ -16,7 +16,6 @@ const Login = props => {
     useEffect(()=>{
         if(autenticado){
             props.history.push('/dashboard');
-
          }
 
         if(mensaje){

@@ -4,7 +4,7 @@ import SideBar from '../layout/SideBar';
 
 import clienteAxios from '../../config/axios';
 
-import {Route, Switch, BrowserRouter as Router} from 'react-router-dom';
+import {Route, Switch, HashRouter as Router} from 'react-router-dom';
 import AgregarUsuario from '../layout/Dashboard/AgregarUsuario/AgregarUsuario';
 import GestionContrato from '../layout/Dashboard/GestionContrato/GestionContrato';
 import Home from '../layout/Dashboard/Home/Home';
@@ -16,6 +16,8 @@ import AuthConext from '../../context/autenticacion/authContext';
 
 
 const Dashboard = () => {
+
+
 
     const authContext = useContext(AuthConext);
     const {usuario} = authContext;
@@ -39,12 +41,12 @@ const Dashboard = () => {
                 {usuario ? (<SideBar />) : null}
                 
                 <Switch>
-                    <Route path={'/dashboard/add-user'} render={(props) => <AgregarUsuario {...props} stateComunas={stateComunas}/>}/>
-                    <Route path={'/dashboard/add-contract'} component={GestionContrato}  />
-                    <Route path={'/dashboard/home'} component={Home} />
-                    <Route path={'/dashboard/gestion-asesoria'} component={GestionAsesorias} />
-                    <Route path={'/dashboard/gestion-capacitaciones'} component={GestionCapacitaciones} />
-                    <Route path={'/dashboard/add-funcionario'} component={AgregarFuncionario} />
+                    <Route path={'/add-user'} render={(props) => <AgregarUsuario {...props} stateComunas={stateComunas}/>}/>
+                    <Route path={'/add-contract'} component={GestionContrato}  />
+                    <Route path={'/home'} component={Home} />
+                    <Route path={'/gestion-asesoria'} component={GestionAsesorias} />
+                    <Route path={'/gestion-capacitaciones'} component={GestionCapacitaciones} />
+                    <Route path={'/add-funcionario'} component={AgregarFuncionario} />
                 </Switch>
                 </div>
             </Router>
