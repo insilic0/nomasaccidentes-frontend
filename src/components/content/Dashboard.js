@@ -11,13 +11,12 @@ import Home from '../layout/Dashboard/Home/Home';
 import GestionAsesorias from '../layout/Dashboard/GestionAsesorias/GestionAsesorias';
 import GestionCapacitaciones from '../layout/Dashboard/GestionCapacitaciones/GestionCapacitaciones';
 import AgregarFuncionario from '../layout/Dashboard/AgregarFuncionario/AgregarFuncionario';
+import GestionAccidentes from '../layout/Dashboard/GestionAccidentes/GestionAccidentes';
 
 import AuthConext from '../../context/autenticacion/authContext';
 
 
 const Dashboard = () => {
-
-
 
     const authContext = useContext(AuthConext);
     const {usuario} = authContext;
@@ -47,6 +46,7 @@ const Dashboard = () => {
                     <Route path={'/gestion-asesoria'} component={GestionAsesorias} />
                     <Route path={'/gestion-capacitaciones'} component={GestionCapacitaciones} />
                     <Route path={'/add-funcionario'} component={AgregarFuncionario} />
+                    <Route path={'/gestion-accidentes'} component={GestionAccidentes} />
                 </Switch>
                 </div>
             </Router>

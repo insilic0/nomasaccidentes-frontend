@@ -429,8 +429,6 @@ footer{
 .contenedor-contenido{
   display: flex;
 }
-
-
 .card{
   display: flex;
   flex-direction: column;
@@ -551,8 +549,23 @@ footer{
   flex-direction: column;
   width: 100%;
 }
+.contenedor-capacitaciones input[type="submit"]{
+  cursor: pointer;
+  transition: 500ms ease;
+}
+
+.contenedor-capacitaciones input[type="submit"]:hover{
+  background-color: #1F4172;
+  color: white;
+}
 .contenedor-capacitaciones h1{
   text-align: center;
+}
+.capacitacion-inputs textarea{
+  width: 250px;
+}
+.capacitacion-inputs{
+  padding: 10px;
 }
 
 .contenedor-capacitaciones h4{

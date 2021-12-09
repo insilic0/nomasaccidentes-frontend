@@ -40,7 +40,6 @@ const ListItem = styled.div`
         box-shadow: 5px 5px gray;
         }
     }
-
     @media(max-width:1500px){
         width: 400px;
     }
@@ -68,7 +67,7 @@ const Services = ({servicesRef}) => {
                 </ListItem>
                 <ListItem>
                     <h2>Capacitaciones</h2>
-                    <p>Contamos con 10 Asesorias al momento de contratar nuestros servicios</p>
+                    <p>Se incluyen 2 capacitaciones en el plan tradicional, en caso de requerirlas</p>
                     <ItemImg src="./assets/services/capacitaciones.jpg"></ItemImg>
                 </ListItem>
                 <ListItem>

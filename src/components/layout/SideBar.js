@@ -12,8 +12,6 @@ const StyledLink = styled(Link)`
 
 const SideBar = () => {
 
-    let {path, url} = useRouteMatch();
-
     const authContext = useContext(AuthContext);
     const {usuarioAutenticado, usuario } = authContext;
 
@@ -33,14 +31,7 @@ const SideBar = () => {
                        <i className="fas fa-home"></i>
                        <p>Inicio</p>
                    </StyledLink> 
-               </div>
-               
-               <div className="sidebar-item">
-                    <StyledLink to={`/add-user`}>
-                        <i className="fas fa-user-plus"></i>
-                        <p>Agregar Cliente</p>
-                    </StyledLink> 
-                </div>
+               </div>            
 
                 <div className="sidebar-item">
                 
@@ -64,17 +55,23 @@ const SideBar = () => {
                     </StyledLink>   
                 </div>
 
+                <div className="sidebar-item">
+                    <StyledLink to={`/gestion-accidentes`}>
+                        <i className="fas fa-laptop-medical"></i>
+                        <p>Gestión Accidentes</p>
+                    </StyledLink>   
+                </div>
+
                </>) : null
             }
             {usuario.cargo_out === 2 ?(
                 //Cargo 2 = Administrador
                 <>
                     <div className="sidebar-item">
-                
-                    <StyledLink to={`/add-contract`}>
-                        <i className="fas fa-file-signature"></i>
-                        <p>Gestion Contrato</p>
-                    </StyledLink>   
+                        <StyledLink to={`/add-user`}>
+                            <i className="fas fa-user-plus"></i>
+                            <p>Agregar Cliente</p>
+                        </StyledLink> 
                     </div>
 
                     <div className="sidebar-item">
@@ -83,6 +80,15 @@ const SideBar = () => {
                             <p>Agregar Funcionario</p>
                         </StyledLink> 
                     </div>
+
+                    <div className="sidebar-item">
+                        <StyledLink to={`/add-contract`}>
+                            <i className="fas fa-file-signature"></i>
+                            <p>Gestion Contrato</p>
+                        </StyledLink>   
+                    </div>
+
+                    
 
                     <div className="sidebar-item">
                         <StyledLink to={`/add-contract`}>

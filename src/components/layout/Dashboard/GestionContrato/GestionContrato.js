@@ -4,7 +4,9 @@ import FuncionarioContext from '../../../../context/funcionario/FuncionarioConte
 import AlertaContext from '../../../../context/validacion/alertaContext';
 import ContratoContext from '../../../../context/contrato/contratoContext';
 import Swal from 'sweetalert2';
-import moment from 'moment';
+
+import {PDFDownloadLink} from '@react-pdf/renderer';
+import PDFContrato from '../../../PDF/PDFContrato';
 
 const GestionContrato = () => {
 
@@ -29,8 +31,10 @@ const GestionContrato = () => {
     });
 
     const [monto_servicio, setMonto_servicio] = useState(0);
-
+    const [statePDF, setStatePDF] = useState({});
     const [mostrarForm, setMostrarForm] = useState(false);
+    const [mostrarLink, setMostrarLink] = useState(false);
+    const [mostrarSubmit, setMostrarSubmit] = useState(false);
 
     const guardarMonto = e =>{
         setMonto_servicio(parseInt(e.target.value, 10));
@@ -82,6 +86,7 @@ const GestionContrato = () => {
         }
             obtenerCliente(busquedaCliente);
             setMostrarForm(true);
+            setMostrarLink(false);
     }
 
     const onClickBusquedaFuncionario = e =>{
@@ -92,6 +97,8 @@ const GestionContrato = () => {
         }
             obtenerFuncionario(busquedaFuncionario);
             setMostrarForm(true);
+            setMostrarLink(false);
+            setMostrarSubmit(true);
     }
 
     const handleSubmitContrato = e =>{
@@ -115,26 +122,30 @@ const GestionContrato = () => {
         agregarContrato(contratoCompleto);
         Swal.fire(
             'Enhorabuena!',
-            'Contrato ingresado correctamente',
+            'Contrato ingresado correctamente, presiona Descargar para obtener el PDF',
             'success'
         );
-
+        
+        setStatePDF({
+              ...contratoCompleto,
+              run,
+              run_funcionario
+        });
         setMostrarForm(false);
         setBusqueda({
             run:''
         });
-
         setFuncionario({
             run_funcionario:''
         });
-
         setServicio({
             motivo_servicio:'',
             fecha_fin_contrato:'',
             desc_servicio : ''
         });
 
-        
+        setMostrarLink(true);
+        setMostrarSubmit(false);
     }
     return (
         <form
@@ -322,12 +333,21 @@ const GestionContrato = () => {
                     </div>) : null}
             </div>
 
-            {cliente && funcionario ? (<input
-                type="submit"
-                value="Generar"
-                className="submit-contrato"
-            />) : null}
+            {(cliente && funcionario) && mostrarSubmit ? (<>
             
+                <input
+                    type="submit"
+                    value="Generar"
+                    className="submit-contrato"
+                />
+            </>) : null}
+
+            {mostrarLink ? (<PDFDownloadLink document={<PDFContrato statePDF={statePDF} />} fileName={`contrato.pdf`}>
+                    {({ blob, url, loading, error }) =>
+                        loading ? 'Cargando documento' : 'Descargar'
+                    }
+                            </PDFDownloadLink>) : null}
+           
             </form>
     )
 }
